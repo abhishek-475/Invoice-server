@@ -1,11 +1,6 @@
 const mongoose = require('mongoose')
 
 const userSchema = new mongoose.Schema({
-    uniqueId: {
-        type: String,
-        required: true,
-        unique: true,
-    },
     username: {
         type: String,
         required: true,
@@ -18,11 +13,17 @@ const userSchema = new mongoose.Schema({
     role: {
         type: String,
         enum: ['SUPER_ADMIN', 'ADMIN', 'UNIT_MANAGER', 'USER'],
+        default: 'USER',
         required: true
     },
     password: {
         type: String,
         required: true
+    },
+     uniqueId: { 
+        type: String, 
+        required: true, 
+        unique: true 
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,

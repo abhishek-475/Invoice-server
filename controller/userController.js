@@ -109,10 +109,10 @@ exports.getUsers = async (req, res) => {
 
 exports.updateUserRole = async (req, res) => {
   const { id } = req.params;
-  const { newRole } = req.body;
+  const { role } = req.body;
 
   try {
-    const updatedUser = await User.findByIdAndUpdate(id, { role: newRole }, { new: true });
+    const updatedUser = await User.findByIdAndUpdate(id, { role }, { new: true });
     res.json({ message: 'Role updated', user: updatedUser });
   } catch (err) {
     res.status(500).json({ error: err.message });
